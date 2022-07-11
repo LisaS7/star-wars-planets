@@ -18,12 +18,19 @@ def get_page_json(url):
         return None
 
 
-def get_int_from_dict(dict, key):
-    try:
-        number = int(dict[key])
-    except ValueError:
-        print(f'Data type of {dict[key]} is not a number')
-    return number
+def set_timedelta(number, units):
+    if isinstance(number, str):
+        raise TypeError(f'Convert string {number} to number before setting timedelta.')
+    if number is None:
+        return None
+    elif units == 'hours':
+        return timedelta(hours=number)
+    elif units == 'days':
+        return timedelta(days=number)
+
+
+def create_planets(data):
+    return [Planet(planet) for planet in data]
 
 
 # __________CLASSES__________
@@ -62,7 +69,7 @@ class BasicApi:
         if response[self.next_url]:
             while response[self.next_url]:
                 response = get_page_json(response[self.next_url])
-                content_list.append(response[self.content])
+                content_list.extend(response[self.content])
         else:
             print('No next page URL found.')
 
@@ -70,23 +77,43 @@ class BasicApi:
 
 
 class Planet:
-    def __init__(self, dict):
-        self.name = dict['name']
-        self.day_length = timedelta(hours=get_int_from_dict(dict, 'rotation_period'))
-        self.year_length = timedelta(days=get_int_from_dict(dict, 'orbital_period'))
+    def __init__(self, data_dict):
+        self.data = data_dict
+        self.name = data_dict['name']
+        self.day_length = set_timedelta(self.int_from_key('rotation_period'), 'hours')
+        self.year_length = set_timedelta(self.int_from_key('orbital_period'), 'days')
+        self.climate = self.list_from_string('climate')
+        self.terrain = self.list_from_string('terrain')
+        self.surface_water = self.int_from_key('surface_water')
+        self.population = self.int_from_key('population')
+        self.gravity = data_dict['gravity']
 
     def __repr__(self):
-        return f'{self.name}, {self.day_length}'
+        return f'{self.name}'
+
+    def int_from_key(self, key):
+        try:
+            number = int(self.data[key])
+            return number
+        except ValueError:
+            return None
+
+    def list_from_string(self, key):
+        return [item.strip() for item in self.data[key].split(',')]
 
 
 if __name__ == '__main__':
+
     SWAPI = BasicApi('SWAPI')
 
     planet_data = SWAPI.get_all_pages()
-    planets = []
+    # for planet in planet_data:
+    #     print(planet)
+    #     print('\n')
+    planets = create_planets(planet_data)
 
-    for planet in planet_data[0:5]:
-        print(planet)
-        planets.append(Planet(planet))
+    # for planet in planets:
+    #     print(planet.name)
+    #     print(planet.surface_water)
 
     print(planets)

@@ -1,6 +1,7 @@
 # Star Wars Planet Browser
 
-A flask app to practise using REST APIs with the Star Wars API (SWAPI) planet data.
+A flask app which retrieves and displays the Star Wars API (SWAPI) planet data.
+I made this app to learn how to use APIs and pytest.
 
 ### swapi.py 
 BasicApi class: retrieves the data from SWAPI and caches it. 
