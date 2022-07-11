@@ -1,3 +1,4 @@
+from pathlib import Path
 import requests
 import requests_cache
 import configparser
@@ -6,7 +7,7 @@ from datetime import timedelta
 
 # __________CONFIG__________
 config = configparser.ConfigParser()
-config.read('config.ini')
+config.read(Path.cwd().parent / 'config.ini')
 
 
 # __________FUNCTIONS__________
