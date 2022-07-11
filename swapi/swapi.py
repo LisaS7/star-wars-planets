@@ -102,18 +102,12 @@ class Planet:
         return [item.strip() for item in self.data[key].split(',')]
 
 
+# __________RUN__________
 if __name__ == '__main__':
 
     SWAPI = BasicApi('SWAPI')
 
     planet_data = SWAPI.get_all_pages()
-    # for planet in planet_data:
-    #     print(planet)
-    #     print('\n')
     planets = create_planets(planet_data)
-
-    # for planet in planets:
-    #     print(planet.name)
-    #     print(planet.surface_water)
 
     print(planets)
