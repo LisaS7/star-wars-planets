@@ -3,3 +3,4 @@ __pycache__/
 .vscode
 virtenv/
 planet_cache*
+test_cache*
