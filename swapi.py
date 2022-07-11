@@ -18,6 +18,14 @@ def get_page_json(url):
         return None
 
 
+def get_int_from_dict(dict, key):
+    try:
+        number = int(dict[key])
+    except ValueError:
+        print(f'Data type of {dict[key]} is not a number')
+    return number
+
+
 # __________CLASSES__________
 class BasicApi:
     def __init__(self, API):
@@ -36,7 +44,7 @@ class BasicApi:
         except configparser.NoSectionError:
             print('API not defined in config.ini')
         except Exception as e:
-            print(e)     
+            print(e)
 
     def create_cache(self):
         cache_expiry_days = int(config.get(self.api, 'CACHE_EXPIRY_DAYS'))
@@ -64,6 +72,11 @@ class BasicApi:
 class Planet:
     def __init__(self, dict):
         self.name = dict['name']
+        self.day_length = timedelta(hours=get_int_from_dict(dict, 'rotation_period'))
+        self.year_length = timedelta(days=get_int_from_dict(dict, 'orbital_period'))
+
+    def __repr__(self):
+        return f'{self.name}, {self.day_length}'
 
 
 if __name__ == '__main__':
@@ -75,5 +88,5 @@ if __name__ == '__main__':
     for planet in planet_data[0:5]:
         print(planet)
         planets.append(Planet(planet))
-        
+
     print(planets)
