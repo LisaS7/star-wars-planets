@@ -1,5 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap');
+
+* {
+    font-family: 'Prompt', sans-serif;
+}
+
 :root {
-    --dark: #3b353e
+    --dark: #343d3e;
+    --light1: #ae9668;
+    --light2: #e1e0d1;
 }
 
 .planet-container {
@@ -13,4 +21,12 @@
 
 .card {
     width: 20vw;
+}
+
+.card-header {
+    background-color: var(--light1);
+}
+
+.card-body {
+    background-color: var(--light2);
 }
