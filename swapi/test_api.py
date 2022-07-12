@@ -2,10 +2,12 @@ from datetime import timedelta
 import os
 import pytest
 from os.path import exists
-from swapi import BasicApi, Planet, get_page_json, create_planets, set_timedelta
+from swapi.swapi import BasicApi, Planet, get_page_json, create_planets, set_timedelta
 
-CACHE = 'test_cache.sqlite'
 GET_URL = 'https://httpbin.org/get'
+CACHE_EXPIRY_DAYS = 1
+CONTENT_LABEL = 'content'
+NEXT_URL_LABEL = 'next'
 
 mock_planet_dict = {
     'name': 'testname',
@@ -19,16 +21,11 @@ mock_planet_dict = {
 }
 
 
-@pytest.fixture(autouse=True, scope='session')
-def test_suite_cleanup():
-    # insert setup code here if required
-    yield
-    os.remove(CACHE)
-
-
 @pytest.fixture()
 def test_api():
-    return BasicApi('TEST')
+    api = BasicApi('TEST')
+    api.url = GET_URL
+    return api
 
 
 @pytest.fixture()
@@ -62,11 +59,6 @@ def test_fail_timedelta():
 def test_api_attributes(test_api):
     assert test_api.api == 'TEST'
     assert test_api.url == GET_URL
-
-
-def test_cache(test_api):
-    get_page_json(test_api.url)
-    assert exists(CACHE)
 
 
 # TODO: how to test test_api.get_all_pages()?

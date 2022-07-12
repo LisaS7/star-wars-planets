@@ -1,13 +1,15 @@
 from pathlib import Path
 import requests
 import requests_cache
-import configparser
 from datetime import timedelta
 
 
 # __________CONFIG__________
-config = configparser.ConfigParser()
-config.read(Path.cwd().parent / 'config.ini')
+URL = 'https://swapi.dev/api/planets/'
+CACHE_NAME = 'planet_cache'
+CACHE_EXPIRY_DAYS = 30
+CONTENT_LABEL = 'results'
+NEXT_URL_LABEL = 'next'
 
 
 # __________FUNCTIONS__________
@@ -38,27 +40,16 @@ def create_planets(data):
 class BasicApi:
     def __init__(self, API):
         self.api = API
-        self.url = None
-        self.content = None
-        self.next_url = None
-        self.config()
+        self.url = URL
+        self.content = CONTENT_LABEL
+        self.next_url = NEXT_URL_LABEL
         self.create_cache()
 
-    def config(self):
-        try:
-            self.url = config.get(self.api, 'URL')
-            self.content = config.get(self.api, 'CONTENT_LABEL')
-            self.next_url = config.get(self.api, 'NEXT_URL_LABEL')
-        except configparser.NoSectionError:
-            print('API not defined in config.ini')
-        except Exception as e:
-            print(e)
-
     def create_cache(self):
-        cache_expiry_days = int(config.get(self.api, 'CACHE_EXPIRY_DAYS'))
+        cache_expiry_days = CACHE_EXPIRY_DAYS
 
         requests_cache.install_cache(
-            cache_name=config.get(self.api, 'CACHE_NAME'),
+            cache_name=CACHE_NAME,
             backend='sqlite',
             expire_after=timedelta(days=cache_expiry_days)
         )
@@ -101,14 +92,3 @@ class Planet:
 
     def list_from_string(self, key):
         return [item.strip() for item in self.data[key].split(',')]
-
-
-# __________RUN__________
-if __name__ == '__main__':
-
-    SWAPI = BasicApi('SWAPI')
-
-    planet_data = SWAPI.get_all_pages()
-    planets = create_planets(planet_data)
-
-    print(planets)
