@@ -8,7 +8,7 @@ for planet in planets:
     climates.extend(list_from_string(planet.climate))
 
 unique_climates = set(climates)
+print(unique_climates)
 
-list2 = []
-climates2 = [list2.extend(list_from_string(planet.climate)) for planet in planets]
-print(list2)
+populations = [planet.population for planet in planets if planet.population]
+print(sorted(populations))
