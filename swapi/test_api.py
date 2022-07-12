@@ -2,7 +2,7 @@ from datetime import timedelta
 import os
 import pytest
 from os.path import exists
-from swapi.swapi import BasicApi, Planet, get_page_json, create_planets, set_timedelta
+from swapi.swapi import BasicApi, Planet, get_page_json, create_planets, list_from_string
 
 GET_URL = 'https://httpbin.org/get'
 CACHE_EXPIRY_DAYS = 1
@@ -45,15 +45,9 @@ def test_create_planets_from_data():
     assert all(isinstance(planet, Planet) for planet in planet_list)
 
 
-def test_set_timedelta():
-    assert set_timedelta(None, 'hours') is None
-    assert set_timedelta(12, 'days') == timedelta(days=12)
-    assert set_timedelta(20, 'hours') == timedelta(hours=20)
-
-
-@pytest.mark.xfail(raises=TypeError)
-def test_fail_timedelta():
-    set_timedelta('12', 'days')
+def test_split_string_method(test_planet):
+    assert list_from_string(test_planet.climate) == ['arid', 'dry']
+    assert list_from_string(test_planet.name) == ['testname']
 
 
 def test_api_attributes(test_api):
@@ -68,17 +62,12 @@ def test_planet_int_method(test_planet):
     assert test_planet.int_from_key('name') is None
 
 
-def test_planet_split_string_method(test_planet):
-    assert test_planet.list_from_string('climate') == ['arid', 'dry']
-    assert test_planet.list_from_string('name') == ['testname']
-
-
 def test_planet_attributes(test_planet):
     assert test_planet.name == 'testname'
-    assert test_planet.day_length == timedelta(hours=12)
-    assert test_planet.year_length == timedelta(days=50)
-    assert test_planet.climate == ['arid', 'dry']
-    assert test_planet.terrain == ['grasslands', 'mountains']
+    assert test_planet.day_length == 12
+    assert test_planet.year_length == 50
+    assert test_planet.climate == 'arid, dry'
+    assert test_planet.terrain == 'grasslands, mountains'
     assert test_planet.surface_water == 60
     assert test_planet.population == 10000
     assert test_planet.gravity == '1 standard'

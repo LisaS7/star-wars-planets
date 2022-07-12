@@ -1,0 +1,16 @@
+:root {
+    --dark: #3b353e
+}
+
+.planet-container {
+    background-color: var(--dark);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 5vw;
+    padding: 5vh 5vw;
+}
+
+.card {
+    width: 20vw;
+}

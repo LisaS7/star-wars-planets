@@ -1,4 +1,3 @@
-from pathlib import Path
 import requests
 import requests_cache
 from datetime import timedelta
@@ -21,19 +20,12 @@ def get_page_json(url):
         return None
 
 
-def set_timedelta(number, units):
-    if isinstance(number, str):
-        raise TypeError(f'Convert string {number} to number before setting timedelta.')
-    if number is None:
-        return None
-    elif units == 'hours':
-        return timedelta(hours=number)
-    elif units == 'days':
-        return timedelta(days=number)
-
-
 def create_planets(data):
     return [Planet(planet) for planet in data]
+
+
+def list_from_string(string):
+    return [item.strip() for item in string.split(',')]
 
 
 # __________CLASSES__________
@@ -72,10 +64,10 @@ class Planet:
     def __init__(self, data_dict):
         self.data = data_dict
         self.name = data_dict['name']
-        self.day_length = set_timedelta(self.int_from_key('rotation_period'), 'hours')
-        self.year_length = set_timedelta(self.int_from_key('orbital_period'), 'days')
-        self.climate = self.list_from_string('climate')
-        self.terrain = self.list_from_string('terrain')
+        self.day_length = self.int_from_key('rotation_period')
+        self.year_length = self.int_from_key('orbital_period')
+        self.climate = data_dict['climate']
+        self.terrain = data_dict['terrain']
         self.surface_water = self.int_from_key('surface_water')
         self.population = self.int_from_key('population')
         self.gravity = data_dict['gravity']
@@ -90,5 +82,4 @@ class Planet:
         except ValueError:
             return None
 
-    def list_from_string(self, key):
-        return [item.strip() for item in self.data[key].split(',')]
+    
