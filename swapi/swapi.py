@@ -82,4 +82,12 @@ class Planet:
         except ValueError:
             return None
 
+    def format_number_for_display(self, attribute, units=''):
+        number = getattr(self, attribute)
+        if number:
+            return f'{number:,}{units}'
+        else:
+            return 'unknown'
+
+
     
