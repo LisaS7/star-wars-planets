@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poller+One&display=swap');
 
-* {
+p {
     font-family: 'Prompt', sans-serif;
+    font-size: 0.9rem;
 }
 
 :root {
@@ -45,12 +46,12 @@ p.inline { display: inline-block; } /* Ensure climate/terrain lists are inline *
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    gap: 5vw;
-    padding: 5vh 5vw;
+    gap: 3.5rem;
+    padding: 2rem;
 }
 
 .card { 
-    width: 20vw; 
+    width: 20rem; 
 }
 
 .card-header { 
