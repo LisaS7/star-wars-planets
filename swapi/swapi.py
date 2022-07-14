@@ -66,8 +66,8 @@ class Planet:
         self.name = data_dict['name']
         self.day_length = self.int_from_key('rotation_period')
         self.year_length = self.int_from_key('orbital_period')
-        self.climate = data_dict['climate']
-        self.terrain = data_dict['terrain']
+        self.climate = list_from_string(data_dict['climate'])
+        self.terrain = list_from_string(data_dict['terrain'])
         self.surface_water = self.int_from_key('surface_water')
         self.population = self.int_from_key('population')
         self.gravity = data_dict['gravity']

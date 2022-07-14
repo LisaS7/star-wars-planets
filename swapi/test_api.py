@@ -45,7 +45,7 @@ def test_create_planets_from_data():
     assert all(isinstance(planet, Planet) for planet in planet_list)
 
 
-def test_split_string_method(test_planet):
+def test_split_string(test_planet):
     assert list_from_string(test_planet.climate) == ['arid', 'dry']
     assert list_from_string(test_planet.name) == ['testname']
 
@@ -66,7 +66,7 @@ def test_planet_attributes(test_planet):
     assert test_planet.name == 'testname'
     assert test_planet.day_length == 12
     assert test_planet.year_length == 50
-    assert test_planet.climate == 'arid, dry'
+    assert test_planet.climate == ['arid', 'dry']
     assert test_planet.terrain == 'grasslands, mountains'
     assert test_planet.surface_water == 60
     assert test_planet.population == 10000
