@@ -25,7 +25,7 @@ What I learned:
 * Deploying to Heroku
 
 Resources:
-[SWAPI Planets Documentation](https://swapi.dev/documentation#planets)
-[How to use APIs](https://realpython.com/api-integration-in-python/)
-[Caching](https://realpython.com/caching-external-api-requests/)
-[Deploying a Flask app to Heroku](https://realpython.com/flask-by-example-part-1-project-setup/)
+* [SWAPI Planets Documentation](https://swapi.dev/documentation#planets)
+* [How to use APIs](https://realpython.com/api-integration-in-python/)
+* [Caching](https://realpython.com/caching-external-api-requests/)
+* [Deploying a Flask app to Heroku](https://realpython.com/flask-by-example-part-1-project-setup/)
