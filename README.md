@@ -12,14 +12,16 @@ I've tried to make this as reusable as possible for other APIs. I added caching 
 Planet class: takes the dictionary returned by the BasicApi class and uses the data to create a Planet object.
 
 ### App
-The app only has one route at the moment which is for the index page to display all the planet cards.
+The main page displays all planets. These can be filtered by climate or terrain by clicking on the links in these fields.
 
 
 What I learned:
 * Setting up linting in VSCode with Flake8 and changing settings
 * Using requests to get data from an API
 * Caching the response
+* Creating routes for variable URLs
 * Creating tests and fixtures with pytest
+* Improved CSS layout skills
 * Deploying to Heroku
 
 Resources:

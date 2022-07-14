@@ -6,16 +6,17 @@
 }
 
 :root {
-    --dark: #373737;
-    --mid1: #2c8bcf;
+    --dark: #010300;
+    --mid1: #0b5a55;
     --light1: #71989d;
-    --light2: #d6dfe8;
+    --light2: #d9eafe;
 }
 
 header {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     background-image: url('/static/banner.jpeg');
+    background-size: cover;
     padding: 2rem;
 }
 
@@ -48,6 +49,13 @@ p.inline { display: inline-block; } /* Ensure climate/terrain lists are inline *
     padding: 5vh 5vw;
 }
 
-.card { width: 20vw; }
-.card-header { background-image: linear-gradient(var(--mid1), var(--light1)); }
+.card { 
+    width: 20vw; 
+}
+
+.card-header { 
+    background-image: linear-gradient(var(--mid1), var(--light1));
+    font-size: 1.5rem;
+}
+
 .card-body { background-color: var(--light2); }

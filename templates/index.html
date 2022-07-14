@@ -11,15 +11,17 @@
 <body>
     <header>
         <div><h1>STAR WARS</h1><h2>Planet Info</h2></div>
-        <a href="/"><button class="btn btn-light">Return Home</button></a>
+        {% if request.path != '/' %}
+            <a href="/"><button class="btn btn-outline-light">Return Home</button></a>
+        {% endif %}
     </header>
     
     <div class="planet-container">
         {% for planet in planets %}
             <div class="card">
-                <div class="card-header">
-                    <p>{{ planet.name }}</p>
-                </div>
+
+                <div class="card-header">{{ planet.name }}</div>
+
                 <div class="card-body">
                     <p>Day Length: {{ planet.format_number_for_display('day_length', ' hours') }}</p>
                     <p>Year Length: {{ planet.format_number_for_display('year_length', ' days') }}</p>
@@ -39,8 +41,8 @@
                     
                     <p>Surface water: {{ planet.format_number_for_display('surface_water', '%') }}</p>
                     <p>Gravity: {{ planet.gravity }}</p>
-
                 </div>
+
             </div>
         {% endfor %}
     </div>
