@@ -3,7 +3,7 @@
 A flask app which retrieves and displays the Star Wars API (SWAPI) planet data.
 I made this app to learn how to use APIs and pytest. This is also the first app I've deployed to Heroku.
 
-(View App)[https://secure-ocean-16983.herokuapp.com/]
+[View App](https://secure-ocean-16983.herokuapp.com/)
 
 ### API
 BasicApi class: retrieves the data from SWAPI and caches it. 
@@ -25,7 +25,7 @@ What I learned:
 * Deploying to Heroku
 
 Resources:
-(SWAPI Planets Documentation)[https://swapi.dev/documentation#planets]
-(How to use APIs)[https://realpython.com/api-integration-in-python/]
-(Caching)[https://realpython.com/caching-external-api-requests/]
-(Deploying a Flask app to Heroku)[https://realpython.com/flask-by-example-part-1-project-setup/]
+[SWAPI Planets Documentation](https://swapi.dev/documentation#planets)
+[How to use APIs](https://realpython.com/api-integration-in-python/)
+[Caching](https://realpython.com/caching-external-api-requests/)
+[Deploying a Flask app to Heroku](https://realpython.com/flask-by-example-part-1-project-setup/)
