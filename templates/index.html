@@ -9,7 +9,11 @@
     <title>Star Wars Planets</title>
 </head>
 <body>
-    <h1>Star Wars Planet Info</h1>
+    <header>
+        <div><h1>STAR WARS</h1><h2>Planet Info</h2></div>
+        <a href="/"><button class="btn btn-light">Return Home</button></a>
+    </header>
+    
     <div class="planet-container">
         {% for planet in planets %}
             <div class="card">
@@ -20,8 +24,19 @@
                     <p>Day Length: {{ planet.format_number_for_display('day_length', ' hours') }}</p>
                     <p>Year Length: {{ planet.format_number_for_display('year_length', ' days') }}</p>
                     <p>Population: {{ planet.format_number_for_display('population') }}</p>
-                    <p>Climate: {{ planet.climate }}</p>
-                    <p>Terrain: {{ planet.terrain }}</p>
+
+                    <p class="inline">Climate: </p>
+                    {% for item in planet.climate %}
+                        <a href="/climate/{{item}}">{{ item }}</a>
+                    {% endfor %}
+
+                    <br>
+
+                    <p class="inline">Terrain: </p>
+                    {% for item in planet.terrain %}
+                        <a href="/terrain/{{item}}">{{ item }}</a>
+                    {% endfor %}
+                    
                     <p>Surface water: {{ planet.format_number_for_display('surface_water', '%') }}</p>
                     <p>Gravity: {{ planet.gravity }}</p>
 

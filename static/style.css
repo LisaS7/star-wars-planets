@@ -1,14 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poller+One&display=swap');
 
 * {
     font-family: 'Prompt', sans-serif;
 }
 
 :root {
-    --dark: #343d3e;
-    --light1: #ae9668;
-    --light2: #e1e0d1;
+    --dark: #373737;
+    --mid1: #2c8bcf;
+    --light1: #71989d;
+    --light2: #d6dfe8;
 }
+
+header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    background-image: url('/static/banner.jpeg');
+    padding: 2rem;
+}
+
+header > div { 
+    grid-column-start: 2; 
+}
+
+h1 { 
+    font-family: 'Poller One', cursive;
+    font-size: 3.5rem;
+    color: var(--light1);
+}
+
+h2 {
+    color: var(--light2);
+}
+
+header > a { 
+    margin-left:auto; 
+}
+
+p.inline { display: inline-block; } /* Ensure climate/terrain lists are inline */
 
 .planet-container {
     background-color: var(--dark);
@@ -19,14 +48,6 @@
     padding: 5vh 5vw;
 }
 
-.card {
-    width: 20vw;
-}
-
-.card-header {
-    background-color: var(--light1);
-}
-
-.card-body {
-    background-color: var(--light2);
-}
+.card { width: 20vw; }
+.card-header { background-image: linear-gradient(var(--mid1), var(--light1)); }
+.card-body { background-color: var(--light2); }
