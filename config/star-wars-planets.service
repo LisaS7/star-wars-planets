@@ -3,6 +3,7 @@ Description=Star Wars Planets
 After=network.target
 
 [Service]
+EnvironmentFile=/home/ec2-user/star-wars-planets/public.env
 ExecStart=/home/ec2-user/star-wars-planets/venv/bin/flask run -p 8001
 Restart=always
 RestartSec=10
