@@ -16,7 +16,7 @@ p {
 header {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  background-image: url("./static/banner.jpeg");
+  background-image: url("./banner.jpeg");
   background-size: cover;
   padding: 2rem;
 }
