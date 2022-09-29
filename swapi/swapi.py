@@ -38,13 +38,16 @@ class BasicApi:
         self.create_cache()
 
     def create_cache(self):
-        cache_expiry_days = CACHE_EXPIRY_DAYS
+        try:
+            cache_expiry_days = CACHE_EXPIRY_DAYS
 
-        requests_cache.install_cache(
-            cache_name=CACHE_NAME,
-            backend='sqlite',
-            expire_after=timedelta(days=cache_expiry_days)
-        )
+            requests_cache.install_cache(
+                cache_name=CACHE_NAME,
+                backend='sqlite',
+                expire_after=timedelta(days=cache_expiry_days)
+            )
+        except:
+            print('Could not create cache')
 
     def get_all_pages(self):
         response = get_page_json(self.url)
