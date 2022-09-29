@@ -1,0 +1,15 @@
+[Unit]
+Description=Star Wars Planets
+After=network.target
+
+[Service]
+ExecStart=/home/ec2-user/star-wars-planets/venv/bin/flask run -p 8001
+Restart=always
+RestartSec=10
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=star-wars-planets
+User=ec2-user
+
+[Install]
+WantedBy=multi-user.target
