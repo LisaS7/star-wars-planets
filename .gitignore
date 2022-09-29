@@ -1,6 +1,6 @@
 __pycache__/
 .pytest_cache/
 .vscode
-virtenv/
+venv/
 planet_cache*
 test_cache*
