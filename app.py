@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 from swapi.swapi import BasicApi, create_planets
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path="/star-wars-planets/static")
 
 SWAPI = BasicApi('SWAPI')
 planet_data = SWAPI.get_all_pages()
@@ -10,6 +10,8 @@ all_planets = create_planets(planet_data)
 
 @app.route("/")
 def index():
+    print(app.static_url_path)
+    print(app.static_folder)
     return render_template('index.html', planets=all_planets)
 
 
