@@ -1,62 +1,66 @@
-@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poller+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poller+One&display=swap");
 
 p {
-    font-family: 'Prompt', sans-serif;
-    font-size: 0.9rem;
+  font-family: "Prompt", sans-serif;
+  font-size: 0.9rem;
 }
 
 :root {
-    --dark: #010300;
-    --mid1: #0b5a55;
-    --light1: #71989d;
-    --light2: #d9eafe;
+  --dark: #010300;
+  --mid1: #0b5a55;
+  --light1: #71989d;
+  --light2: #d9eafe;
 }
 
 header {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    background-image: url('/static/banner.jpeg');
-    background-size: cover;
-    padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background-image: url("./static/banner.jpeg");
+  background-size: cover;
+  padding: 2rem;
 }
 
-header > div { 
-    grid-column-start: 2; 
+header > div {
+  grid-column-start: 2;
 }
 
-h1 { 
-    font-family: 'Poller One', cursive;
-    font-size: 3.5rem;
-    color: var(--light1);
+h1 {
+  font-family: "Poller One", cursive;
+  font-size: 3.5rem;
+  color: var(--light1);
 }
 
 h2 {
-    color: var(--light2);
+  color: var(--light2);
 }
 
-header > a { 
-    margin-left:auto; 
+header > a {
+  margin-left: auto;
 }
 
-p.inline { display: inline-block; } /* Ensure climate/terrain lists are inline */
+p.inline {
+  display: inline-block;
+} /* Ensure climate/terrain lists are inline */
 
 .planet-container {
-    background-color: var(--dark);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 3.5rem;
-    padding: 2rem;
+  background-color: var(--dark);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 3.5rem;
+  padding: 2rem;
 }
 
-.card { 
-    width: 20rem; 
+.card {
+  width: 20rem;
 }
 
-.card-header { 
-    background-image: linear-gradient(var(--mid1), var(--light1));
-    font-size: 1.5rem;
+.card-header {
+  background-image: linear-gradient(var(--mid1), var(--light1));
+  font-size: 1.5rem;
 }
 
-.card-body { background-color: var(--light2); }
+.card-body {
+  background-color: var(--light2);
+}
