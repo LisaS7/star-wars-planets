@@ -10,7 +10,11 @@
       integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" type="text/css" href="./static/style.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/star-wars-planets/static/style.css"
+    />
     <title>Star Wars Planets</title>
   </head>
   <body>
@@ -46,14 +50,14 @@
 
           <p class="inline">Climate:</p>
           {% for item in planet.climate %}
-          <a href="./climate/{{item}}">{{ item }}</a>
+          <a href="/star-wars-planets/climate/{{item}}">{{ item }}</a>
           {% endfor %}
 
           <br />
 
           <p class="inline">Terrain:</p>
           {% for item in planet.terrain %}
-          <a href="./terrain/{{item}}">{{ item }}</a>
+          <a href="/star-wars-planets/terrain/{{item}}">{{ item }}</a>
           {% endfor %}
 
           <p>
